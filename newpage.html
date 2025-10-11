@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfume Details | Memories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #111;
+      color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .section {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* центрируем оба элемента */
+      margin-bottom: 25px;
+      gap: 15px; /* 🔥 меньше расстояние между фото и таблицей */
+      flex-wrap: wrap;
+    }
+
+    .section img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 45%;
+      background-color: #222;
+      border-radius: 8px;
+      overflow: hidden;
+      min-width: 280px;
+    }
+
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #333;
+    }
+
+    th {
+      background-color: #333;
+      text-align: left;
+      color: #f2b94b;
+    }
+
+    td {
+      color: #ddd;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #333;
+      margin: 25px 0;
+    }
+
+    /* 📱 Адаптивность */
+    @media (max-width: 900px) {
+      .section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 5px; /* 🔥 ещё меньше на мобильных */
+      }
+
+      .section img {
+        width: 80%;
+        max-width: 350px;
+      }
+
+      table {
+        width: 90%;
+      }
+    }
+    .navbar {
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .logo img {
+      height: 80px;
+      width: auto;
+    }
+    .brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    .brand h1 {
+      font-size: 32px;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .links a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 14px;
+      font-size: 18px;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+    .links a:hover {
+      background-color: #f2b94b;
+      color: #111;
+    }
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 900px) {
+      .links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    @media (max-width: 768px) {
+        .brand {
+            position: static;
+            transform: none;
+            margin-top: 10px;
+        }
+        .brand h1 {
+            font-size: 28px;
+        }
+        .links {
+            justify-content: center;
+        }
+        .carousel-item {
+            flex: 0 0 45%;
+        }
+        .logo img {
+            height: 70px;
+        }
+        .links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #111;
+        padding: 10px 0;
+        text-align: center;
+      }
+        .links.show {
+        display: flex;
+      }
+        .hamburger {
+        display: block;
+      }
+    }
+
+
+    .perfume-mood {
+  text-align: center;
+  margin-top: 60px;
+  background-color: #151515;
+  color: #f5f5f5;
+  padding: 60px 20px;
+  border-radius: 12px;
+}
+
+.perfume-mood h2 {
+  color: #f2b94b;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.mood-subtext {
+  color: #bbb;
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+.mood-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.mood-card {
+  background-color: #222;
+  border-radius: 12px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.mood-card:hover {
+  transform: translateY(-6px);
+}
+
+.mood-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.mood-card h3 {
+  color: #f2b94b;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.mood-card p {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* 📱 адаптив */
+@media (max-width: 900px) {
+  .mood-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mood-card {
+    width: 90%;
+    max-width: 320px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+          <img src="memories_logo.png" alt="logo">
+        </div>
+        <div class="brand">
+          <h1>MEMORIES</h1>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav class="links" id ="menu">
+          <a href="#">STORES</a>
+          <a href="#">SERVICES</a>
+          <a href="#">CONTACT INFO</a>
+        </nav>
+      </header>
+
+  <h1>Perfume Ingredients</h1>
+
+  <!-- 1️⃣ Первый блок -->
+   <section>
+  <div class="section">
+    <img src="img1.png" alt="Perfume 1">
+    <table>
+      <tr><th>Perfume</th><td>Autumn Nostalgia</td></tr>
+      <tr><th>Top Notes</th><td>Orange blossom, Bergamot</td></tr>
+      <tr><th>Heart Notes</th><td>Jasmine, Coffee</td></tr>
+      <tr><th>Base Notes</th><td>Vanilla, Cedarwood</td></tr>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- 2️⃣ Второй блок -->
+  <div class="section">
+    <table>
+      <tr><th>Perfume</th><td>Winter Memory</td></tr>
+      <tr><th>Top Notes</th><td>Mint, Lemon</td></tr>
+      <tr><th>Heart Notes</th><td>Lavender, Cinnamon</td></tr>
+      <tr><th>Base Notes</th><td>Amber, Musk</td></tr>
+    </table>
+    <img src="img2.png" alt="Perfume 2">
+  </div>
+</section>
+<section class="perfume-mood">
+    <h2>Perfume Moods</h2>
+    <p class="mood-subtext">Each fragrance tells a different story — choose the one that matches your mood.</p>
+  
+    <div class="mood-grid">
+      <div class="mood-card">
+        <img src="img1.png" alt="Morning Vibe">
+        <h3>Morning Breeze</h3>
+        <p>Light and fresh, perfect for a new beginning. With notes of citrus and green tea.</p>
+      </div>
+  
+      <div class="mood-card">
+        <img src="img2.png" alt="Evening Elegance">
+        <h3>Evening Elegance</h3>
+        <p>Deep, sophisticated, and warm. The perfect scent for dinner or special occasions.</p>
+      </div>
+  
+      <div class="mood-card">
+        <img src="img3.png" alt="Casual Day">
+        <h3>Casual Day</h3>
+        <p>Simple yet expressive — soft jasmine and sandalwood for everyday calm.</p>
+      </div>
+  
+      <div class="mood-card">
+        <img src="img4.png" alt="Night Mystery">
+        <h3>Night Mystery</h3>
+        <p>Mysterious and sensual, blending amber, oud, and dark vanilla tones.</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Memories Project. All rights reserved.</p>
+  </footer>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("show");
+    }
+    </script>
+    
+</body>
+</html>
+
+
